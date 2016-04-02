@@ -1,0 +1,14 @@
+{
+  "name": "domain-layer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "redux": "^3.3.1"
+  }
+}
