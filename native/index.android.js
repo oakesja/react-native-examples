@@ -1,7 +1,7 @@
 import React, { Component, AppRegistry } from 'react-native';
 import { Provider } from 'react-redux'
 import { Store } from 'domain-layer'
-import App from './src/containers/App'
+import App from './src/components/App'
 
 class MainApp extends Component {
   render() {

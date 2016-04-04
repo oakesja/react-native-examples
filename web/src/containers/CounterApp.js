@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { CounterActions } from 'domain-layer'
-import Counter from '../components/Counter.js'
+import Counter from '../components/Counter'
 
 const mapStateToProps = (state) => {
   return {
@@ -8,9 +8,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const App = connect(
+const CounterApp = connect(
   mapStateToProps,
   CounterActions
 )(Counter)
 
-export default App
+export default CounterApp

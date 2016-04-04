@@ -1,19 +1,32 @@
 import * as Constants from './constants'
 
-export function increment() {
+function requestRepos(username) {
   return {
-    type: Constants.INCREMENT,
+    type: Constants.FETCH_REPOS_REQUEST,
+    username: username
   }
 }
 
-export function decrement() {
+function receiveRepos(json) {
   return {
-    type: Constants.DECREMENT,
+    type: Constants.FETCH_REPOS_SUCCESS,
+    json: json
   }
 }
 
-export function incrementIfOdd() {
+function fetchReposError(error) {
   return {
-    type: Constants.INCREMENT_IF_ODD,
+    type: Constants.FETCH_REPOS_ERROR,
+    error: error
+  }
+}
+
+export function fetchRepos(username) {
+  return dispatch => {
+    dispatch(requestRepos(username))
+    return fetch(`https://api.github.com/users/${username}/repos`)
+      .then(response => response.json())
+      .then(json => dispatch(receiveRepos(json)))
+      .catch(error => dispatch(fetchReposError(error)))
   }
 }
