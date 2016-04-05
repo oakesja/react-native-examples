@@ -17,12 +17,15 @@ class Counter extends Component {
 
   renderButton(text, action) {
     return (
-      <TouchableHighlight onPress={action}>
-        <Text>{text}</Text>
-      </TouchableHighlight>
+      <Button
+        text={text}
+        onClick={action}
+        style={{width:200, height: 50}}
+      />
     )
   }
 }
+
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,

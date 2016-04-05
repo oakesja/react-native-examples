@@ -3,7 +3,6 @@ package com.reactnativetutorial;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
-
 import com.facebook.react.uimanager.ReactCompoundView;
 
 public class MyButton extends Button implements ReactCompoundView {
