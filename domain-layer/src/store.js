@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore as cs, combineReducers, applyMiddleware } from 'redux'
 import "babel-polyfill"
 import counter from './counter/reducer'
 import github from './github/reducer'
@@ -10,9 +10,12 @@ const reducer = combineReducers({
   github
 })
 
-export const Store = createStore(
-  reducer,
-  applyMiddleware(
-    thunkMiddleware
+export function createStore() {
+  return cs(
+    reducer,
+    applyMiddleware(
+      thunkMiddleware
+    )
   )
-)
+}
+  

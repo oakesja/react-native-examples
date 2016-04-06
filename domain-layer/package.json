@@ -2,10 +2,12 @@
   "name": "domain-layer",
   "version": "0.0.1",
   "private": true,
-  "main": "src/index.js",
-  "scripts": {},
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel --presets es2015 -d lib/ src/"
+  },
   "files": [
-    "src"
+    "lib"
   ],
   "dependencies": {
     "babel-polyfill": "^6.7.4",

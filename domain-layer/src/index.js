@@ -1,9 +1,9 @@
-import { Store } from './store'
+import { createStore } from './store'
 import * as CounterActions from './counter/actions'
 import * as GithubActions from './github/actions'
 
 export {
-  Store,
+  createStore,
   CounterActions,
   GithubActions
 }
