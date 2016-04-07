@@ -6,53 +6,58 @@ import Counter from '../../src/components/Counter'
 import { Provider } from 'react-redux'
 import { createStore } from 'domain-layer'
 
-describe("<App />", function() {
-  beforeEach(function() {
-    this.view = mount(
-      <Provider store={createStore()}>
-        <App />
-      </Provider>
-    )
-    this.counter = this.view.find(Counter)
-  })
-  afterEach(function() {
-    this.view.unmount()
-  }) 
-  
-  context("Counter", function() {
-    it("start at 0", function() {
-      expectValue(this.counter, 0) 
-    })
-    context("clicking the increment button", function() {
-      it("increments the value by 1", function() {
-        this.counter.find('button').at(0).simulate('click')
-        expectValue(this.counter, 1) 
-      }) 
-    }) 
-    context("clicking the decrement button", function() {
-      it("decrements the value by 1", function() {
-        this.counter.find('button').at(1).simulate('click')
-        expectValue(this.counter, -1) 
-      }) 
-    }) 
-    context("click the increment if odd button", function() {
-      context("when the value is even", function() {
-        it("does not change the value", function() {
-          this.counter.find('button').at(2).simulate('click')
-          expectValue(this.counter, 0)
-        }) 
-      }) 
-      context("when the value is odd", function() {
-        it("increments the value by 1", function() {
-          this.counter.find('button').at(0).simulate('click')
-          this.counter.find('button').at(2).simulate('click')
-          expectValue(this.counter, 2)
-        }) 
-      }) 
-    }) 
-  }) 
-  
-  function expectValue(counter, value) {
-    expect(counter.text()).to.contain(`Clicked: ${value} times`)
+function setup() {
+  let view = mount(
+    <Provider store={createStore()}>
+      <App />
+    </Provider>
+  )
+  let counter = view.find(Counter)
+  return {
+    counter
   }
+}
+
+describe("<App />", () => {
+  context("Counter", () => {
+    it("start at 0", () => {
+      const { counter } = setup()
+      expectValue(counter, 0) 
+    })
+    context("clicking the increment button", () => {
+      it("increments the value by 1", () => {
+        const { counter } = setup()
+        counter.find('button').at(0).simulate('click')
+        expectValue(counter, 1) 
+      }) 
+    }) 
+    context("clicking the decrement button", () => {
+      it("decrements the value by 1", () => {
+        const { counter } = setup()
+        counter.find('button').at(1).simulate('click')
+        expectValue(counter, -1) 
+      }) 
+    }) 
+    context("click the increment if odd button", () => {
+      context("when the value is even", () => {
+        it("does not change the value", () => {
+          const { counter } = setup()
+          counter.find('button').at(2).simulate('click')
+          expectValue(counter, 0)
+        }) 
+      }) 
+      context("when the value is odd", () => {
+        it("increments the value by 1", () => {
+          const { counter } = setup()
+          counter.find('button').at(0).simulate('click')
+          counter.find('button').at(2).simulate('click')
+          expectValue(counter, 2)
+        }) 
+      }) 
+    }) 
+  }) 
 }) 
+
+function expectValue(counter, value) {
+  expect(counter.text()).to.contain(`Clicked: ${value} times`)
+}
