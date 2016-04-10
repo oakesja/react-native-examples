@@ -1,7 +1,6 @@
 import React from 'react'
 import { createStore as cs, combineReducers, applyMiddleware } from 'redux'
-import "babel-polyfill"
-import counter from './counter/reducer'
+import counter from './counter'
 import github from './github/reducer'
 import thunkMiddleware from 'redux-thunk'
 

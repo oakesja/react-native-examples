@@ -1,6 +1,7 @@
 import { createStore } from './store'
-import * as CounterActions from './counter/actions'
+import * as CounterActions from './counter'
 import * as GithubActions from './github/actions'
+import "babel-polyfill"
 
 export {
   createStore,
