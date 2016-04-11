@@ -1,8 +1,9 @@
 import React from 'react'
 import { createStore as cs, combineReducers, applyMiddleware } from 'redux'
 import counter from './counter'
-import github from './github/reducer'
+import github from './github'
 import thunkMiddleware from 'redux-thunk'
+import { httpCallMiddleware } from './actionCreators'
 
 const reducer = combineReducers({
   counter,
@@ -13,7 +14,8 @@ export function createStore() {
   return cs(
     reducer,
     applyMiddleware(
-      thunkMiddleware
+      thunkMiddleware, 
+      httpCallMiddleware
     )
   )
 }
