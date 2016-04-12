@@ -90,5 +90,6 @@ describe("actionCreators", () => {
         expect(dispatch.calledWith({type: "request"}))
       }) 
     }) 
+    // TODO figure out how to mock the makeRequest call to test that the success and error actions are dispatched properly
   }) 
 }) 
