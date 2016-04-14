@@ -1,12 +1,12 @@
 import React, { Component, AppRegistry } from 'react-native';
 import { Provider } from 'react-redux'
-import { Store } from 'domain-layer'
+import { createStore } from 'domain-layer'
 import App from './src/components/App'
 
 class MainApp extends Component {
   render() {
     return (
-      <Provider store={Store}>
+      <Provider store={createStore()}>
         <App />
       </Provider>
     )
